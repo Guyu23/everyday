@@ -1,1 +1,2 @@
 # everyday
+just code everyday
