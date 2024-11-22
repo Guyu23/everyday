@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
     body {
@@ -16,48 +16,186 @@
       align-items: center;
     }
 
-    .container {
-      background: lightgrey;
-      position: relative;
+    .total-container {
       width: 400px;
       height: 200px;
-      .dots {
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
-        .dot {
-          width: 10px;
-          height: 10px;
-          background: lightgrey;
-          border-radius: 50%;
+      overflow: hidden;
+      position: relative;
 
-          &.selected {
-            background: black;
-          }
+      .container {
+        background: lightgrey;
+        position: absolute;
+        width: 2800px;
+        height: 200px;
+        display: flex;
+        gap: 0;
+
+        .img {
+          display: inline-block;
+          width: 400px;
+          height: 100%;
+          background: lightblue;
+          color: white;
+          font-size: 42px;
+          font-weight: 700;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
+
+    .dots {
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        background: lightgrey;
+        border-radius: 50%;
+
+        &.selected {
+          background: black;
+        }
+      }
+    }
+
+    .total {
+      position: relative;
+    }
+
+    .left,
+    .right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .left {
+      left: 10px;
+    }
+
+    .right {
+      right: 10px;
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="img">1</div>
-    <div class="img">2</div>
-    <div class="img">3</div>
-    <div class="img">4</div>
-    <div class="img">5</div>
+  <div class="total">
+    <div class="total-container">
+      <div class="container">
+        <div class="img"><span>1</span></div>
+        <div class="img"><span>2</span></div>
+        <div class="img"><span>3</span></div>
+        <div class="img"><span>4</span></div>
+        <div class="img"><span>5</span></div>
+      </div>
+    </div>
+    <button class='left' onclick="left()"><svg xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24">
+        <g fill="none"
+          fill-rule="evenodd">
+          <path
+            d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+          <path fill="currentColor"
+            d="M7.94 13.06a1.5 1.5 0 0 1 0-2.12l5.656-5.658a1.5 1.5 0 1 1 2.121 2.122L11.122 12l4.596 4.596a1.5 1.5 0 1 1-2.12 2.122l-5.66-5.658Z" />
+        </g>
+      </svg></button>
+    <button class='right' onclick="right()"><svg xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24">
+        <g fill="none"
+          fill-rule="evenodd">
+          <path
+            d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+          <path fill="currentColor"
+            d="M16.06 10.94a1.5 1.5 0 0 1 0 2.12l-5.656 5.658a1.5 1.5 0 1 1-2.121-2.122L12.879 12L8.283 7.404a1.5 1.5 0 0 1 2.12-2.122l5.658 5.657Z" />
+        </g>
+      </svg></button>
     <div class="dots">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
       <div class="dot selected"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
   </div>
+  <script>
+    let index = 0;
+    const dots = document.querySelectorAll('.dot');
+    const imgs = document.querySelectorAll('.img');
+    const container = document.querySelector('.container');
+    const imgWidth = imgs[0].offsetWidth;
+    function moveTo(index) {
+      dots.forEach(dot => dot.classList.remove('selected'));
+      dots[index].classList.add('selected');
+      container.style.transform = `translateX(-${index * imgWidth}px)`;
+      container.style.transition = 'transform 0.5s ease'
+    }
+
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        moveTo(index = i);
+      });
+    });
+
+    function left() {
+      if (index === 0) {
+        index = imgs.length - 1
+        container.style.transition = 'none'
+        container.style.transform = `translateX(-${(imgs.length) * imgWidth}px)`
+        requestAnimationFrame(() => {
+          moveTo(imgs.length - 1)
+        })
+      } else {
+        moveTo(--index);
+      }
+    }
+
+    function right() {
+      if (index === imgs.length - 1) {
+        index = 0
+        container.style.transition = 'none'
+        container.style.transform = `translateX(${imgWidth}px)`
+        requestAnimationFrame(() => {
+          moveTo(0)
+        })
+      } else {
+        moveTo(++index);
+      }
+    }
+
+    function init() {
+      const firstImg = imgs[0].cloneNode(true)
+      const lastImg = imgs[imgs.length - 1].cloneNode(true)
+      lastImg.style.marginLeft = '-400px'
+      container.appendChild(firstImg)
+      container.insertBefore(lastImg, imgs[0])
+    }
+
+    init()
+  </script>
 </body>
 
 </html>
