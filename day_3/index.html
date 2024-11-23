@@ -96,7 +96,8 @@
       menu.style.top = `${top}px`;
     }
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', e => {
+      e.stopPropagation();
       show = !show;
       if (show) {
         menu.classList.remove('hide')
@@ -107,6 +108,12 @@
         menu.classList.add('hide')
       }
     });
+
+    window.addEventListener('click', () => {
+      show = false
+      menu.classList.remove('show')
+      menu.classList.add('hide')
+    })
 
     menu.addEventListener('animationend', () => {
       if (!show) {
