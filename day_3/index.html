@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      width: 120px;
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+
+    #menu {
+      margin: 0;
+      transform-origin: left top;
+      border: none;
+      outline: 1px solid #E5E7EB;
+      border-radius: 10px;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    #menu.show:popover-open {
+      animation: slideIn 0.3s ease-in-out;
+      display: flex;
+    }
+
+    #menu.hide:popover-open {
+      animation: slideOut 0.3s ease-in-out;
+      display: flex;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class='popover'>popover</button>
+  <div id='menu'
+    class='show'
+    popover='manual'>
+    <button>Item 1</button>
+    <button>Item 2</button>
+    <button>Item 3</button>
+  </div>
+  <script>
+    const button = document.querySelector('.popover');
+    const menu = document.querySelector('#menu');
+    let show = false
+    function init() {
+      const left = button.offsetLeft;
+      const top = button.offsetTop + button.offsetHeight + 10;
+      menu.style.left = `${left}px`;
+      menu.style.top = `${top}px`;
+    }
+
+    button.addEventListener('click', () => {
+      show = !show;
+      if (show) {
+        menu.classList.remove('hide')
+        menu.classList.add('show')
+        menu.showPopover();
+      } else {
+        menu.classList.remove('show')
+        menu.classList.add('hide')
+      }
+    });
+
+    menu.addEventListener('animationend', () => {
+      if (!show) {
+        menu.hidePopover();
+      }
+    });
+    init();
+  </script>
+</body>
+
+</html>
