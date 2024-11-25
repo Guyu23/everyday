@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f1f1f1;
+    }
+    div {
+      border: 8px dashed lightgray;
+      border-radius: 20px;
+      padding: 50px;
+      font-size: 54px;
+      font-weight: 900;
+      color: transparent;
+      background: linear-gradient(45deg, #ffeb3b, #009688, yellowgreen, pink, #03a9f4, #9c27b0, #8bc34a);
+      background-clip: text;
+      animation: huerotate 10s infinite;
+    }
+
+    @keyframes huerotate {
+      100% {
+        filter: hue-rotate(360deg);
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  <div>The Best & Simple Blog System</div>
+</body>
+</html>
